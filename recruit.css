@@ -1,0 +1,56 @@
+/* 募集要項専用：カンプ再現コード */
+
+/* 1. ヒーロー（FV） */
+.recruit-hero {
+  background-color: var(--bg-hero); /* #F7F5F0 */
+  padding-top: var(--space-hero-top);
+  padding-bottom: 80px;
+}
+
+.recruit-hero__title {
+  font-size: var(--fz-h2); /* 28px */
+  letter-spacing: 5.88px;
+  color: var(--text-black);
+}
+
+/* 2. タブメニュー（広め・線なし） */
+.recruit-body { background-color: var(--bg-recruit); padding-bottom: 100px; }
+.tab-menu { padding-top: 80px; }
+.tab-menu__list { display: flex; justify-content: center; gap: 100px; list-style: none; }
+.tab-menu__item { position: relative; padding-bottom: 20px; }
+
+/* アクティブ時の下線：3px */
+.tab-menu__item.is-active::after {
+  content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #000;
+}
+.tab-menu__main { font-size: var(--fz-tab); letter-spacing: 2.52px; color: #333; font-weight: 500; }
+.tab-menu__sub { font-size: 14px; color: var(--text-gray); letter-spacing: 2.24px; }
+
+/* 3. 募集要項リスト（面レイアウト・線は一本もなし！） */
+.recruit-detail { margin-top: var(--space-80); }
+.recruit-list { display: flex; flex-direction: column; }
+
+.recruit-list__row {
+  display: grid;
+  grid-template-columns: var(--dt-width) 1fr; /* 左203px固定、右可変 */
+}
+
+.recruit-list__row dt {
+  background-color: var(--bg-dt); /* #F0F0EE */
+  padding: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--fz-body);
+}
+
+.recruit-list__row dd {
+  background-color: var(--bg-recruit); /* #FAFAF8 */
+  padding: 40px 60px;
+  display: flex; align-items: center;
+  font-size: var(--fz-body);
+}
+
+/* 4. エントリーボタン */
+.recruit-entry { text-align: center; padding: 100px 0; background-color: var(--bg-recruit); }
+.recruit-entry__btn {
+  display: inline-block; background: #000; color: #fff; padding: 24px 80px; border-radius: 50px; text-decoration: none;
+}

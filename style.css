@@ -1,37 +1,240 @@
+/* =============================================
+   :root（共通トークン）
+   ============================================= */
 :root {
-  /* 色の定義 */
-  --bg-orange: #F7F5F0; 
-  --header-white: #ffffffab;
+  --font-base: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+
+  --container-max: 1440px;
+  --header-h: clamp(64px, 5.5vw, 80px);
+
+  --color-header-bg: rgba(255, 255, 255, 0.67);
+  --color-text: #333;
+  --color-text-muted: #555;
+  --color-bg-base: #F7F5F0;
+  --footer-bg-base: #D5D5D1;
+
+  --color-accent: #E39A3B;
+
+  --header-label-size: clamp(12px, 0.9vw, 14px);
+  --header-nav-size: clamp(14px, 0.9vw, 16px);
+
   --footer-gray: #D5D5D1;
-  --text-main: #000000;
-  --text-sub: rgba(0, 0, 0, 0.82);
-  --header-h: clamp(72px, 7vw, 80px);
-  --row-image: clamp(320px, 42vw, 600px);
+  --footer-text: #FCEFD9;
+  --footer-icon: #969592;
+
+  --footer-height-pc: 464px;
+  --footer-logo-w: 280px;
+  --footer-icon-size: 24px;
+
+  --footer-padding-x: clamp(24px, 4.44vw, 64px);
+  --footer-padding-y: clamp(56px, 6.67vw, 96px);
+  --footer-gap: clamp(32px, 5vw, 72px);
+
+  --footer-font-size: 16px;
+  --footer-font-size-sp: 14px;
+
+  --footer-link-underline-h: 2px;
+  --footer-link-underline-offset: -6px;
 }
 
-/* リセット */
-* { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
+
+/* ============================================
+   RESET（ブラウザ初期化）
+   ============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
-  background: var(--bg-orange);
-  color: var(--text-main);
-  font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
-  overflow-x: hidden;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  outline: none;
+  appearance: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* =============================================
-   共通レイアウト：.l-container
+   BASE / COMMON（全体共通ルール）
    ============================================= */
+
+/* body */
+body {
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg-base);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* リンク共通挙動 */
+a {
+  transition: opacity 0.3s ease-out;
+}
+
+/* hover（PC） */
+@media (hover: hover) {
+  a:hover {
+    opacity: 0.65;
+  }
+}
+
+/* タップ（SP） */
+a:active {
+  opacity: 0.9;
+}
+
+/* タップ時のハイライト無効 */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .l-container {
-  width: min(100%, 1440px);
+  width: 100%;
+  max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: clamp(24px, 5%, 64px);
+  padding-inline: clamp(24px, 5vw, 64px);
   box-sizing: border-box;
+}
+
+/* 共通img安全策 */
+img {
+  vertical-align: bottom;
+}
+
+/* ボタンカーソル */
+button {
+  cursor: pointer;
+}
+
+/* =============================================
+   Header
+   ============================================= */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-h);
+  z-index: 100;
+  background: var(--color-header-bg);
+  backdrop-filter: blur(4px);
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------------------------------------------
+   Branding
+   --------------------------------------------- */
+.site-header__branding {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.site-header__logo {
+  margin: 0;
+  width: clamp(180px, 42%, 263px);
+}
+
+.site-header__logo-link {
+  display: block;
+  width: fit-content;
+}
+
+.site-header__logo img {
+  width: min(100%, 263px);
+  height: auto;
+  display: block;
+}
+
+.site-header__label {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--header-label-size);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------
+   Navigation
+   --------------------------------------------- */
+.site-header__nav {
+  flex: 0 0 auto;
+}
+
+.site-header__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 2.5vw, 40px);
+}
+
+.site-header__item {
+  flex: 0 0 auto;
+}
+
+.site-header__link {
+  display: inline-block;
+  color: var(--color-text-muted);
+  font-size: var(--header-nav-size);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 /* =============================================
@@ -39,21 +242,32 @@ body {
    ============================================= */
 .hero {
   width: 100%;
-  min-height: 100vh;
+  min-height: clamp(520px, 55vh, 880px);
+  position: relative;
+}
+.hero__ornament {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: clamp(260px, 26vw, 500px);
+  aspect-ratio: 930 / 720;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* ヘッダー背景（全幅） */
-.hero__header-bg {
-  position: absolute; /* 昇降JSを入れるまでは absolute で一旦維持 */
-  top: 0;
-  left: 0;
+.hero__ornament svg {
   width: 100%;
-  height: var(--header-h);
-  background: var(--header-white);
-  backdrop-filter: blur(4px);
-  z-index: 11;
+  height: 100%;
+  display: block;
+  transform: rotate(0deg);
+  transform-origin: center;
 }
 
+.hero__ornament path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
+}
 .hero__inner {
   /* FV専用グリッド定数をローカル化 */
   --hero-col-1: 98fr;
@@ -111,17 +325,21 @@ body {
 }
 
 .hero__title {
-  font-size: clamp(28px, 4vw, 56px);
+  font-size: clamp(28px, 4vw, 48px);
   line-height: 1.2;
   margin-bottom: 0.2em;
   white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 5.7px;
+  color: #000;
 }
 
 .hero__subtitle {
-  font-size: clamp(14px, 1.8vw, 22px);
-  color: #555;
-  font-weight: 700;
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: #333;
+  font-weight: 400;
   white-space: nowrap;
+  letter-spacing: 1.4px;
 }
 
 /* スクロール */
@@ -137,14 +355,17 @@ body {
 }
 
 .hero__scroll-text {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  color: rgba(51, 51, 51, 0.60);
+  letter-spacing: 1.4px;
+  font-weight: 400;
   font-size: 12px;
-  letter-spacing: 0.2em;
 }
 
 .hero__scroll-line {
   width: 1px;
   height: clamp(10px, 2vw, 20px);
-  background: #000;
+  background: rgba(51, 51, 51, 0.60);
   margin-top: 8px;
 }
 
@@ -152,22 +373,22 @@ body {
    FV CTA
    Heroの外に置く独立UI
    ============================================= */
+:root {
+  --fv-cta-right: max(0px, calc((100vw - 1580px) / 2));
+  --fv-cta-bottom: clamp(24px, 2.4vw, 40px);
+  --fv-cta-width: clamp(56px, 4.72vw, 68px);
+  --fv-cta-height: clamp(136px, 12.22vw, 176px);
+  --fv-cta-radius: 16px;
+  --fv-cta-text-size: clamp(14px, 1.11vw, 16px);
+}
 .fv-cta {
   position: fixed;
   z-index: 50;
+  right: var(--fv-cta-right);
+  bottom: var(--fv-cta-bottom);
 
-  /* 縦位置：
-     サブコピー付近〜少し下を想定 */
-  top: clamp(340px, 36vw, 452px);
-
-  /* 横位置：
-     1440コンテンツの右端基準。
-     画面が広い時は1440の外へ行かず、
-     画面が狭い時は右端から少し内側へ。 */
-  right: max(8px, calc((100vw - 1440px) / 2));
-
-  width: clamp(56px, 4.72vw, 68px);
-  height: clamp(136px, 12.22vw, 176px);
+  width: var(--fv-cta-width);
+  height: var(--fv-cta-height);
 
   display: flex;
   align-items: center;
@@ -177,7 +398,7 @@ body {
   color: #fff;
   text-decoration: none;
 
-  border-radius: 16px 0 0 16px;
+  border-radius: var(--fv-cta-radius) 0 0 var(--fv-cta-radius);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 
   transition:
@@ -195,75 +416,62 @@ body {
 .fv-cta__text {
   writing-mode: vertical-rl;
   text-orientation: upright;
-
-  font-size: clamp(14px, 1.11vw, 16px);
+  font-size: var(--fv-cta-text-size);
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
-/* ---------------------------------------------
-   1440未満
-   右端から少し内側へ
-   --------------------------------------------- */
-/* @media (max-width: 1440px) {
-  .fv-cta {
-    right: clamp(0px, 1.67vw, 24px);
-  }
-} */
+.fv-cta.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+}
 
-@media (min-width: 1600px) {
-  .fv-cta {
-    top: clamp(380px, 40vw, 520px);
+@media (max-width: 1440px) {
+  :root {
+    --fv-cta-right: 0px;
   }
 }
 
-/* ---------------------------------------------
-   タブレット
-   少し小さく・少し上へ
-   --------------------------------------------- */
 @media (max-width: 980px) {
-  .fv-cta {
-    top: clamp(280px, 34vw, 360px);
-    width: clamp(52px, 6.2vw, 60px);
-    height: clamp(120px, 16vw, 148px);
-    border-radius: 14px 0 0 14px;
-  }
-
-  .fv-cta__text {
-    font-size: clamp(13px, 1.53vw, 15px);
+  :root {
+    --fv-cta-right: 0px;
+    --fv-cta-bottom: 20px;
+    --fv-cta-width: clamp(52px, 6.2vw, 60px);
+    --fv-cta-height: clamp(120px, 16vw, 148px);
+    --fv-cta-radius: 14px;
+    --fv-cta-text-size: clamp(13px, 1.53vw, 15px);
   }
 }
 
 /* =============================================
    Recruitmentセクション
+   PCリキッド整理版
    ============================================= */
 .recruit {
-  width: 100%;
   background: #fafafa;
-  padding-top: clamp(72px, 6vw, 96px);
-  padding-bottom: clamp(80px, 7vw, 112px);
+  padding-top: clamp(72px, 6.67vw, 96px);
+  padding-bottom: clamp(84px, 7.78vw, 112px);
 }
 
 .recruit__inner {
   display: grid;
-  grid-template-columns:
-    clamp(240px, 24%, 300px)
-    minmax(0, 1fr);
-  column-gap: clamp(40px, 4vw, 88px);
+  grid-template-columns: clamp(230px, 20.35vw, 293px) minmax(0, 1fr);
+  column-gap: clamp(48px, 8.33vw, 120px);
   align-items: start;
 }
 
 /* 左リード */
 .recruit__lead-box {
   grid-column: 1 / 2;
-  margin-top: 0;
 }
 
 .recruit__lead-inner {
   width: 100%;
-  aspect-ratio: 5 / 4;
-  border: 1px solid rgba(0, 0, 0, 0.42);
+  aspect-ratio: 293 / 240;
+  box-sizing: border-box;
+  border: 1px solid #000;
   background: transparent;
 
   display: flex;
@@ -272,210 +480,181 @@ body {
   justify-content: center;
   text-align: center;
 
-  padding: clamp(32px, 3.4vw, 44px);
+  padding: clamp(20px, 1.94vw, 28px) clamp(18px, 1.67vw, 24px);
 }
 
 .recruit__lead-title {
-  font-size: clamp(15px, 1.35vw, 19px);
-  line-height: 1.75;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #2f2f2f;
+  margin: 0;
+  color: #333;
+  text-align: center;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(14px, 1.11vw, 16px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.1em;
 }
 
 .recruit__lead-text {
-  margin-top: clamp(18px, 1.6vw, 24px);
+  margin: clamp(18px, 1.67vw, 24px) 0 0;
+  color: #333;
+  text-align: center;
+  font-family: "Noto Sans JP", sans-serif;
   font-size: clamp(11px, 0.9vw, 13px);
-  line-height: 1.95;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: rgba(0, 0, 0, 0.58);
+  font-weight: 300;
+  line-height: 1.3077;
+  letter-spacing: 0.06em;
 }
 
 /* 右カード群 */
 .recruit__content-area {
   grid-column: 2 / 3;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: clamp(28px, 3vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 200px));
+  column-gap: clamp(24px, 4.51vw, 65px);
+  justify-content: start;
+  align-items: start;
+  padding-top: clamp(8px, 0.83vw, 12px);
 }
 
 .recruit__card {
-  flex: 0 1 auto;
+  width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  padding-top: clamp(10px, 0.9vw, 14px);
+  padding-top: clamp(10px, 0.97vw, 14px);
   border-top: 3px solid #d89228;
-  margin-top: 0; /* ← ここ大事。頭揃える */
+  box-sizing: border-box;
 }
 
-/* 幅だけで差をつける */
-.recruit__card:nth-child(1) {
-  width: clamp(180px, 18vw, 240px);
-}
-
-.recruit__card:nth-child(2) {
-  width: clamp(170px, 17vw, 225px);
-}
-
-.recruit__card:nth-child(3) {
-  width: clamp(185px, 18.5vw, 250px);
-}
-
-/* 文字 */
 .recruit__card-title {
-  font-size: clamp(14px, 1.15vw, 18px);
-  line-height: 1.45;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #2f2f2f;
+  margin: 0;
+  color: #333;
+  text-align: left;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-weight: 500;
+  line-height: 1.117;
+  letter-spacing: 0.1em;
 }
 
 .recruit__card-status {
-  margin-top: clamp(8px, 0.8vw, 11px);
-  font-size: clamp(11px, 0.88vw, 13px);
-  line-height: 1.6;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: rgba(0, 0, 0, 0.58);
+  margin: clamp(10px, 0.9vw, 13px) 0 0;
+  color: #555;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(12px, 0.9vw, 13px);
+  font-weight: 350;
+  line-height: 1.3077;
+  letter-spacing: 0.08em;
 }
 
 .recruit__card-desc {
-  margin-top: clamp(18px, 1.5vw, 22px);
-  font-size: clamp(11px, 0.88vw, 13px);
-  line-height: 1.8;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: rgba(0, 0, 0, 0.58);
+  margin: clamp(18px, 1.53vw, 22px) 0 0;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(11px, 0.83vw, 12px);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 .recruit__card-detail {
-  margin-top: clamp(22px, 1.8vw, 28px);
-  font-size: clamp(13px, 0.98vw, 15px);
-  line-height: 1.9;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: rgba(0, 0, 0, 0.60);
+  margin: clamp(24px, 2.22vw, 32px) 0 0;
+  color: #555;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(12px, 0.97vw, 14px);
+  font-weight: 300;
+  line-height: 1.5714;
+  letter-spacing: 0.08em;
 }
 
 .recruit__card-link {
-  margin-top: clamp(28px, 2.4vw, 36px);
+  margin: clamp(28px, 2.36vw, 34px) 0 0 auto;
   display: inline-block;
-  align-self: flex-end;
+  color: #333;
   text-decoration: none;
-  font-size: clamp(11px, 0.88vw, 13px);
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: #4a4a4a;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(12px, 0.9vw, 13px);
+  font-weight: 350;
+  line-height: 1.3077;
+  letter-spacing: 0.08em;
 }
 
-/* ノートPC */
-@media (max-width: 1440px) {
-  .recruit__inner {
-    grid-template-columns:
-      clamp(220px, 24%, 280px)
-      minmax(0, 1fr);
-    column-gap: clamp(28px, 3vw, 56px);
-  }
-
-  .recruit__content-area {
-    gap: clamp(20px, 2.2vw, 32px);
-  }
-
-  .recruit__card:nth-child(1) {
-    width: clamp(170px, 18vw, 220px);
-  }
-
-  .recruit__card:nth-child(2) {
-    width: clamp(160px, 17vw, 205px);
-  }
-
-  .recruit__card:nth-child(3) {
-    width: clamp(175px, 18.5vw, 230px);
-  }
-}
-
-/* タブレット */
 @media (max-width: 980px) {
+
+  /* 外側：2カラム → 1カラム（上下構成へ） */
   .recruit__inner {
     grid-template-columns: 1fr;
-    row-gap: 36px;
+    row-gap: clamp(40px, 6vw, 64px);
   }
 
-  .recruit__lead-box,
-  .recruit__content-area {
+  /* 左カード → 上段 */
+  .recruit__lead-box {
     grid-column: auto;
   }
 
+  /* 左カードのサイズは維持（でも中央寄せだけ追加） */
   .recruit__lead-inner {
-    max-width: 420px;
+    max-width: 250px;
+    margin-inline: auto;
   }
 
-  .recruit__card {
-    width: auto !important;
-    flex: 1 1 0;
+  /* 右カード群 → 下段 */
+  .recruit__content-area {
+    grid-column: auto;
+
+    /* ここが肝：3列維持しつつ最大240 */
+    grid-template-columns: repeat(3, minmax(160px, 240px));
+
+    /* 中央寄せ（カンプ寄せ） */
+    justify-content: center;
+
+    column-gap: clamp(24px, 5.2vw, 42px);
+
+    padding-top: 0; /* PCのズラし解除 */
   }
+
 }
-
 
 /* =============================================
    Featureセクション
-   カンプ寄せ強化版（文字サイズ調整版）
+   破綻しない寄せ方・PC妥協案
+   フォント反映版
    ============================================= */
 .feature {
-  width: 100%;
   background: #f7f5f0;
   padding-top: clamp(110px, 11.74vw, 169px);
   padding-bottom: clamp(120px, 14.51vw, 209px);
 }
 
 .feature__inner {
-  align-items: start;
   display: grid;
   grid-template-columns:
-    minmax(16px, 91px)
-    repeat(12, minmax(0, 78px))
-    minmax(16px, 167px);
-  column-gap: 24px;
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    clamp(240px, 20.35vw, 293px);
+  column-gap: clamp(24px, 2.78vw, 28px);
+  align-items: start;
 }
 
 /* =============================================
-   4つの大枠配置
+   左3列
    ============================================= */
-.feature__col--left  { grid-column: 2 / span 3; }
-.feature__col--center{ grid-column: 5 / span 3; }
-.feature__col--right { grid-column: 8 / span 3; }
-
-.feature-panel {
-  grid-column: 11 / span 3;
-  margin-top: clamp(150px, 14.38vw, 207px);
-}
-
-/* 各縦列は「積む」けど、均等にしない */
 .feature__col {
   display: grid;
   align-content: start;
-  justify-items: start;
+  row-gap: clamp(20px, 2.22vw, 32px);
 }
 
-.feature__col--left {
-  row-gap: 0;
-  padding-top: 0;
+.feature__col--left,
+.feature__col--center,
+.feature__col--right {
+  min-width: 0;
 }
 
 .feature__col--center {
-  row-gap: 0;
-  padding-top: clamp(22px, 2.01vw, 29px);
-}
-
-.feature__col--right {
-  row-gap: 0;
-  padding-top: 0;
+  padding-top: clamp(18px, 2.01vw, 29px);
 }
 
 /* =============================================
@@ -483,15 +662,14 @@ body {
    ============================================= */
 .feature-card {
   min-width: 0;
+  width: 100%;
   background: #fff;
 }
 
 .feature-card--text {
   display: grid;
   align-content: start;
-  padding:
-    clamp(22px, 2.1vw, 30px)
-    clamp(18px, 1.7vw, 24px);
+  padding: clamp(22px, 2.1vw, 30px) clamp(18px, 1.7vw, 24px);
 }
 
 .feature-card--photo {
@@ -506,144 +684,121 @@ body {
 }
 
 /* =============================================
-   左列（258系）
+   カードタイプ別ルール
    ============================================= */
+
+/* テキストカード */
 .feature-card--t1,
+.feature-card--t5 {
+  min-height: clamp(220px, 19vw, 282px);
+}
+
 .feature-card--t2,
-.feature-card--p1 {
-  width: min(100%, clamp(220px, 17.92vw, 258px));
-}
-
-.feature-card--t1 {
-  min-height: clamp(220px, 18.47vw, 266px);
-  margin-top: 0;
-}
-
-.feature-card--t2 {
-  min-height: clamp(152px, 12.78vw, 184px);
-  margin-top: clamp(20px, 2.36vw, 34px);
-}
-
-.feature-card--p1 {
-  aspect-ratio: 258 / 263;
-  margin-top: clamp(18px, 1.60vw, 23px);
-}
-
-/* =============================================
-   中列（254系）
-   ============================================= */
-.feature-card--p2,
 .feature-card--t3,
-.feature-card--p3 {
-  width: min(100%, clamp(216px, 17.64vw, 254px));
+.feature-card--t4 {
+  min-height: clamp(180px, 15.5vw, 240px);
+}
+
+/* 画像カード */
+.feature-card--p1 {
+  aspect-ratio: 1 / 1;
 }
 
 .feature-card--p2 {
-  aspect-ratio: 254 / 318;
-  margin-top: 0;
+  aspect-ratio: 4 / 5;
 }
 
-.feature-card--t3 {
-  min-height: clamp(184px, 15.35vw, 221px);
-  margin-top: clamp(18px, 1.81vw, 26px);
-}
-
-.feature-card--p3 {
-  aspect-ratio: 254 / 169;
-  margin-top: clamp(34px, 3.47vw, 50px);
-}
-
-/* =============================================
-   右列（259/287系）
-   ============================================= */
-.feature-card--t4,
+.feature-card--p3,
 .feature-card--p4 {
-  width: min(100%, clamp(220px, 17.99vw, 259px));
+  aspect-ratio: 3 / 2;
 }
 
+/* 右列の最後だけ少し大きめ感を残す */
 .feature-card--t5 {
-  width: min(100%, clamp(230px, 19.93vw, 287px));
-}
-
-.feature-card--t4 {
-  min-height: clamp(200px, 16.88vw, 243px);
-  margin-top: 0;
-}
-
-.feature-card--p4 {
-  aspect-ratio: 259 / 209;
-  margin-top: clamp(22px, 2.22vw, 32px);
-}
-
-.feature-card--t5 {
-  min-height: clamp(220px, 19.58vw, 282px);
-  margin-top: clamp(22px, 2.22vw, 32px);
+  width: calc(100% + 19px);
 }
 
 /* =============================================
    小カード内テキスト
    ============================================= */
-.feature-card--text h2,
-.feature-card--text h3 {
+.feature-card__title {
   margin: 0;
-  font-size: clamp(14px, 1.2vw, 18px);
-  line-height: 1.55;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #2f2f2f;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(15px, 1.18vw, 17px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2352941176; /* 21 / 17 */
+  letter-spacing: 1.19px;
 }
 
-.feature-card--text p {
+.feature-card__text {
   margin-top: clamp(16px, 1.6vw, 24px);
-  font-size: clamp(11px, 0.88vw, 13px);
-  line-height: 1.9;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: rgba(0, 0, 0, 0.60);
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(12px, 0.97vw, 14px);
+  font-style: normal;
+  font-weight: 350;
+  line-height: 1.4285714286; /* 20 / 14 */
+  letter-spacing: 0;
 }
 
 /* =============================================
    右パネル
    ============================================= */
+.feature-panel {
+  min-width: 0;
+  padding-top: clamp(120px, 14vw, 120px);
+  margin-left: clamp(16px, 1.8vw, 28px);
+}
+
 .feature-panel__inner {
-  width: min(100%, 293px);
-  height: 569px;
+  width: 100%;
+  min-height: clamp(480px, 39.5vw, 569px);
   background: #fff;
   border: 2px solid rgba(0, 0, 0, 0.78);
   box-sizing: border-box;
 
-  padding: 84px 44px 42px;
+  padding: clamp(56px, 5.83vw, 84px)
+           clamp(24px, 3.05vw, 44px)
+           clamp(32px, 2.92vw, 42px);
 
-  display: grid;
-  grid-template-rows: auto auto 1fr auto auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-panel__heading {
   margin: 0;
-  font-size: clamp(24px, 2.2vw, 34px);
-  line-height: 1.05;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(24px, 1.995vw, 28.723px);
+  font-style: normal;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  color: #3e3a39;
+  line-height: normal;
+  letter-spacing: 1.149px;
 }
 
 .feature-panel__title {
-  margin: clamp(36px, 3vw, 46px) 0 0;
-  font-size: clamp(16px, 1.25vw, 20px);
-  line-height: 1.75;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: #5a5248;
+  margin: clamp(28px, 3vw, 46px) 0 0;
+  color: #58503D;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(16px, 1.39vw, 18px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45; /* 29 / 20 */
+  letter-spacing: 1.6px;
 }
 
 .feature-panel__text {
-  align-self: end;
-  margin: 0;
-  font-size: clamp(10px, 0.82vw, 12px);
-  line-height: 1.9;
+  align-self: start;
+  margin: 40px 0 0 0;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(13px, 1.04vw, 15px);
+  font-style: normal;
   font-weight: 400;
-  letter-spacing: 0.03em;
-  color: #5a5248;
+  line-height: 1.4666666667; /* 22 / 15 */
+  letter-spacing: 1.5px;
 }
 
 .feature-panel__line {
@@ -652,7 +807,7 @@ body {
   width: 94px;
   height: 1px;
   background: rgba(90, 82, 72, 0.62);
-  margin-top: 22px;
+  margin-top: 28px;
 }
 
 /* =============================================
@@ -661,169 +816,250 @@ body {
 @media (max-width: 1280px) {
   .feature__inner {
     grid-template-columns:
-      minmax(20px, 1fr)
-      repeat(12, minmax(0, 1fr))
-      minmax(20px, 1fr);
-    column-gap: clamp(12px, 1.88vw, 24px);
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      clamp(220px, 22vw, 260px);
+    column-gap: clamp(20px, 2vw, 28px);
   }
 
-  .feature-card--t1,
-  .feature-card--t2,
-  .feature-card--p1,
-  .feature-card--p2,
-  .feature-card--t3,
-  .feature-card--p3,
-  .feature-card--t4,
-  .feature-card--p4,
-  .feature-card--t5,
-  .feature-panel__inner {
+  .feature__col--center {
+    padding-top: clamp(12px, 1.5vw, 20px);
+  }
+
+  .feature-panel {
+    padding-top: clamp(80px, 10vw, 140px);
+  }
+}
+
+/* =============================================
+   980以下
+   ============================================= */
+@media (max-width: 980px) {
+  .feature-panel {
+    display: none;
+  }
+
+  .feature__inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 32px;
+  }
+
+  .feature__col--left {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .feature__col--center {
+    grid-column: 2;
+    grid-row: auto;
+    padding-top: 0;
+  }
+
+  .feature__col--right {
+    grid-column: 3;
+    grid-row: auto;
+  }
+
+  .feature__col {
+    row-gap: 20px;
+  }
+
+  .feature-card--t5 {
     width: 100%;
   }
 }
 
 /* =============================================
-   タブレット
-   ============================================= */
-@media (max-width: 980px) {
-  .feature {
-    padding-top: clamp(88px, 10vw, 120px);
-    padding-bottom: clamp(88px, 10vw, 120px);
-  }
-
-  .feature__inner {
-    grid-template-columns:
-      minmax(20px, 1fr)
-      repeat(6, minmax(0, 1fr))
-      minmax(20px, 1fr);
-    column-gap: 16px;
-    row-gap: 28px;
-  }
-
-  .feature__col--left {
-    grid-column: 2 / span 3;
-  }
-
-  .feature__col--center {
-    grid-column: 5 / span 3;
-    padding-top: 0;
-  }
-
-  .feature__col--right {
-    grid-column: 2 / span 3;
-  }
-
-  .feature-panel {
-    grid-column: 5 / span 3;
-    margin-top: 0;
-  }
-
-  .feature-card--t2,
-  .feature-card--p1,
-  .feature-card--t3,
-  .feature-card--p3,
-  .feature-card--p4,
-  .feature-card--t5 {
-    margin-top: 20px;
-  }
-}
-
-
-/* =============================================
-   Messageセクション
+   Messageセクション（可変版・gap修正版）
    ============================================= */
 .message {
+  position: relative;
   width: 100%;
-  background: #062c3f;
-  padding-top: clamp(88px, 10.42vw, 150px);
-  padding-bottom: clamp(88px, 9.72vw, 140px);
+  background: #0B2737;
+  min-height: clamp(640px, 60.42vw, 870px);
+  overflow: hidden;
+}
+
+.message__ornament {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(260px, 26vw, 500px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.message__ornament svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.message__ornament svg path {
+  opacity: 0.5 !important;
 }
 
 .message__inner {
-  /* l-container を芯にして、中だけ flex */
-  display: flex;
-  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) clamp(300px, 30vw, 440px);
+  grid-template-areas:
+    "header image"
+    "text   image";
+  align-items: start;
   justify-content: space-between;
-  gap: clamp(32px, 5.56vw, 80px);
+
+  padding:
+    clamp(120px, 12vw, 160px)
+    clamp(48px, 13.19vw, 190px)
+    clamp(72px, 8vw, 120px);
+
+  column-gap: clamp(80px, 12vw, 160px);
+  row-gap: clamp(32px, 3.33vw, 48px);
 }
 
-/* ---------------------------------------------
-   左テキスト
---------------------------------------------- */
-.message__content {
-  flex: 0 1 460px;
-  min-width: 0;
-  color: #ffffff;
-  padding-top: clamp(8px, 1.39vw, 20px);
+/* 左上 */
+.message__header {
+  grid-area: header;
+  max-width: 520px;
+}
+
+/* 左下 */
+.message__text {
+  grid-area: text;
+  max-width: 520px;
+  margin-top: clamp(8px, 1.67vw, 24px);
+}
+
+/* 右 */
+.message__image {
+  grid-area: image;
+  width: clamp(300px, 30vw, 440px);
+  aspect-ratio: 440 / 550;
+  overflow: hidden;
+}
+
+.message__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .message__eyebrow {
   margin: 0;
-  font-size: clamp(14px, 1.11vw, 16px);
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.96);
+  color: #FFF;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(13px, 1.04vw, 15px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 1.5px;
 }
 
 .message__title {
-  margin: clamp(22px, 2.57vw, 37px) 0 0;
-  font-size: clamp(32px, 3.33vw, 48px);
-  line-height: 1.35;
+  margin: 16px 0 0;
+  color: #FFF;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(26px, 2.36vw, 34px);
   font-weight: 500;
-  letter-spacing: 0.03em;
-  color: #ffffff;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  word-break: keep-all;
 }
 
 .message__sub {
-  margin: clamp(12px, 1.39vw, 20px) 0 0;
-  font-size: clamp(13px, 1.11vw, 16px);
-  line-height: 1.5;
+  margin: 10px 0 0;
+  color: #FFF;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(11px, 0.83vw, 12px);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.message__text {
-  margin-top: clamp(52px, 5vw, 72px);
+  line-height: 1.2;
+  letter-spacing: 0.72px;
 }
 
 .message__text p {
   margin: 0;
-  font-size: clamp(14px, 1.25vw, 18px);
-  line-height: 2;
+  color: #FFF;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(14px, 1.11vw, 16px);
   font-weight: 400;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.96);
+  line-height: clamp(24px, 2.08vw, 30px);
+  letter-spacing: 0.8px;
 }
 
-/* ---------------------------------------------
-   右画像
---------------------------------------------- */
-.message__image {
-  flex: 0 1 560px;
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 560 / 640;
-  margin: clamp(18px, 4.03vw, 58px) 0 0;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
-}
+/* =============================================
+   980以下
+   表題 → 画像 → 本文
+   ============================================= */
+@media (max-width: 980px) {
+  .message {
+    min-height: auto;
+  }
 
-.message__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  .message__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding:
+      clamp(72px, 8vw, 96px)
+      clamp(20px, 4vw, 32px)
+      clamp(140px, 8vw, 96px);
+
+    gap: min(5vw, 48px);
+  }
+
+  .message__header {
+    max-width: 100%;
+  }
+
+  .message__image {
+    width: 60%;
+    max-width: 440px;
+    min-width: 240px;
+    margin-inline: auto;
+
+    aspect-ratio: 440 / 550;
+    overflow: hidden;
+  }
+
+  .message__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .message__text {
+    order: 3;
+    max-width: min(88%, 530px);
+    margin: 0 auto;
+    margin-top: 0;
+  }
+
+  .message__title {
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .message__ornament {
+    width: clamp(180px, 32vw, 320px);
+  }
 }
 
 /* =============================================
    Storyセクション
-   ============================================= */
+============================================= */
 .story {
+  position: relative;
   width: 100%;
   background: #f7f5f0;
   padding-top: clamp(88px, 9.72vw, 140px);
   padding-bottom: clamp(88px, 11.11vw, 160px);
+  overflow: hidden;
 }
 
 .story__inner {
@@ -836,47 +1072,50 @@ body {
 --------------------------------------------- */
 .story__heading {
   width: 100%;
-  max-width: clamp(420px, 43.06vw, 620px);
+  max-width: 700px;
   margin-left: clamp(16px, 4.44vw, 64px);
 }
 
 .story__eyebrow {
   margin: 0;
-  font-size: clamp(12px, 0.97vw, 14px);
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: #2f2f2f;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(13px, 1.04vw, 15px);
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.08em;
 }
 
 .story__title {
   margin: clamp(14px, 1.94vw, 28px) 0 0;
-  font-size: clamp(30px, 3.06vw, 44px);
-  line-height: 1.38;
+  color: #222;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(26px, 2.36vw, 34px);
   font-weight: 500;
-  letter-spacing: 0.03em;
-  color: #343434;
+  line-height: 1.45;
+  letter-spacing: clamp(1.8px, 0.19vw, 2.72px);
 }
 
 .story__lead {
-  margin: clamp(20px, 2.22vw, 32px) 0 0;
-  font-size: clamp(13px, 1.11vw, 16px);
-  line-height: 1.95;
+  margin: clamp(18px, 2.22vw, 32px) 0 0;
+  color: #555;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(14px, 1.11vw, 16px);
   font-weight: 400;
-  letter-spacing: 0.04em;
-  color: rgba(0, 0, 0, 0.68);
+  line-height: 1.625;
+  letter-spacing: clamp(1px, 0.16vw, 2.24px);
 }
 
 /* ---------------------------------------------
    カード一覧
 --------------------------------------------- */
 .story__list {
-  margin-top: clamp(56px, 6.94vw, 100px);
+  width: min(100%, 1120px);
+  margin: clamp(56px, 6.94vw, 100px) auto 0;
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: clamp(32px, 6.94vw, 100px);
-  padding-inline: clamp(24px, 3.47vw, 50px);
+  justify-content: center;
+  gap: clamp(56px, 10vw, 200px);
 }
 
 /* ---------------------------------------------
@@ -889,26 +1128,46 @@ body {
 }
 
 .story-card--01 {
-  width: min(100%, 342px);
+  width: clamp(320px, 30.56vw, 440px);
 }
 
 .story-card--02 {
-  width: min(100%, 342px);
-  margin-top: clamp(64px, 8.33vw, 120px);
+  width: clamp(280px, 25vw, 360px);
+  margin-top: clamp(56px, 7.64vw, 110px);
 }
 
+/* PC順 */
 .story-card__image {
+  order: 1;
   width: 100%;
   overflow: hidden;
   background: #eceae3;
 }
 
+.story-card__intro {
+  order: 2;
+  margin-top: clamp(18px, 2.08vw, 30px);
+}
+
+.story-card__profile {
+  order: 3;
+  margin-top: clamp(18px, 1.67vw, 24px);
+}
+
+.story-card__tags {
+  order: 4;
+  margin-top: clamp(14px, 1.67vw, 24px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+
 .story-card--01 .story-card__image {
-  aspect-ratio: 342 / 406;
+  aspect-ratio: 440 / 550;
 }
 
 .story-card--02 .story-card__image {
-  aspect-ratio: 342 / 406;
+  aspect-ratio: 360 / 540;
 }
 
 .story-card__image img {
@@ -921,63 +1180,246 @@ body {
 /* ---------------------------------------------
    本文
 --------------------------------------------- */
-.story-card__body {
-  margin-top: clamp(18px, 2.08vw, 30px);
+.story-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.story-card__pin {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.story-card__pin svg {
+  display: block;
+  width: 14px;
+  height: 20px;
 }
 
 .story-card__number {
   margin: 0;
-  font-size: clamp(22px, 1.67vw, 24px);
-  line-height: 1;
+  color: #555;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(22px, 1.94vw, 28px);
   font-weight: 400;
-  letter-spacing: 0.03em;
-  color: #c98b2e;
+  line-height: 1;
+  letter-spacing: 1.12px;
 }
 
 .story-card__catch {
   margin: clamp(12px, 1.11vw, 16px) 0 0;
-  font-size: clamp(14px, 1.25vw, 18px);
-  line-height: 1.85;
+  color: #555;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(15px, 1.25vw, 18px);
   font-weight: 400;
-  letter-spacing: 0.04em;
-  color: #4c4c4c;
+  line-height: 1.45;
 }
 
 .story-card__name {
-  margin: clamp(18px, 1.67vw, 24px) 0 0;
-  font-size: clamp(13px, 1.11vw, 16px);
-  line-height: 1.6;
+  margin: 0;
+  color: #555;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(14px, 1.11vw, 16px);
   font-weight: 400;
-  color: #4c4c4c;
+  line-height: normal;
 }
 
 .story-card__meta {
-  margin: clamp(6px, 0.69vw, 10px) 0 0;
-  font-size: clamp(11px, 0.97vw, 14px);
-  line-height: 1.8;
+  margin: clamp(10px, 0.83vw, 12px) 0 0;
+  color: #555;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(13px, 1.04vw, 15px);
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.66);
+  line-height: normal;
 }
 
-.story-card__tags {
-  margin-top: clamp(16px, 1.67vw, 24px);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.story-card__profile-inline {
+  display: none;
 }
 
 .story-card__tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 28px;
-  padding: 4px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  background: #faf9f6;
-  font-size: clamp(10px, 0.83vw, 12px);
-  line-height: 1.4;
-  color: rgba(0, 0, 0, 0.62);
+  min-height: 32px;
+  padding: 5px 12px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  color: #555;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(12px, 0.97vw, 14px);
+  font-weight: 300;
+  line-height: normal;
   white-space: nowrap;
+}
+
+/* ---------------------------------------------
+   768px以下
+--------------------------------------------- */
+@media (max-width: 768px) {
+  .story {
+    padding-top: 72px;
+    padding-bottom: 96px;
+  }
+
+  .story__heading {
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .story__eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.1px;
+  }
+
+  .story__title {
+    margin-top: 14px;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 1.6px;
+  }
+
+  .story__lead {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 1.3px;
+  }
+
+  .story__list {
+    width: 82%;
+    margin: clamp(40px, 6vw, 48px) auto 0;
+    flex-direction: column;
+    gap: clamp(56px, 8vw, 72px);
+  }
+
+  .story-card,
+  .story-card--01,
+  .story-card--02 {
+    width: 100%;
+  }
+
+  .story-card--02 {
+    margin-top: 0;
+  }
+
+  /* SP順 */
+  /* .story-card__intro {
+    order: 1;
+    margin-top: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+  } */
+  .story-card__intro {
+    order: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .story-card__image {
+    order: 2;
+    width: 100%;
+    margin-top: clamp(12px, 2vw, 16px);
+  }
+
+  .story-card__profile {
+    order: 3;
+    margin-top: clamp(12px, 2vw, 16px);
+  }
+
+  .story-card__tags {
+    order: 4;
+    margin-top: clamp(12px, 2vw, 14px);
+  }
+
+  .story-card--01 .story-card__image,
+  .story-card--02 .story-card__image {
+    aspect-ratio: 344 / 258;
+  }
+
+  /* .story-card__head {
+    flex: 0 0 auto;
+    align-items: flex-end;
+    gap: 4px;
+  } */
+  .story-card__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    padding-top: 2px;
+  }
+
+  .story-card__pin {
+    width: 12px;
+    height: 20px;
+    margin-top: 1;
+    align-items: flex-end;
+  }
+
+  .story-card__pin svg {
+    width: 12px;
+    height: 20px;
+  }
+
+  .story-card__number {
+    font-size: clamp(19px, 2.45vw, 22px);
+    line-height: 1.15;
+  }
+
+  .story-card__catch {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.53;
+  }
+
+  .story-card__name,
+  .story-card__meta {
+    display: none;
+  }
+
+  .story-card__profile-inline {
+    display: block;
+    margin: 0;
+    color: #555;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .story-card__profile-inline span {
+    display: inline-block;
+    margin: 0 8px;
+  }
+
+  .story-card--02 .story-card__tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .story-card__tag {
+    min-height: 32px;
+    padding: 5px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  .story__list {
+    width: 100%;
+  }
 }
 
 /* ---------------------------------------------
@@ -990,52 +1432,208 @@ body {
 }
 
 .story__link {
-  font-size: clamp(18px, 1.39vw, 20px);
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: #4a4a4a;
+  position: relative;
+  display: inline-block;
+  color: #555;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(21px, 2.7vw, 24px);
+  letter-spacing: clamp(2.94px, 0.38vw, 3.5px);
+  font-weight: 500;
+  line-height: normal;
+}
+
+.story__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+
+  width: 0;
+  height: 2px;
+  background: #ccba97;
+
+  transition: width 0.3s ease;
+}
+
+.story__link:hover::after {
+  width: 100%;
+}
+
+/* ---------------------------------------------
+   サイトフッター
+--------------------------------------------- */
+
+.site-footer {
+  width: 100%;
+  min-height: var(--footer-height-pc);
+  background: var(--footer-gray);
+}
+
+.site-footer__inner {
+  width: min(100%, 1440px);
+  min-height: inherit;
+  margin-inline: auto;
+  padding-inline: var(--footer-padding-x);
+  padding-top: var(--footer-padding-y);
+  padding-bottom: 48px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--footer-gap);
+}
+
+.site-footer__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--footer-icon-size);
+  height: var(--footer-icon-size);
   text-decoration: none;
 }
 
-.story__link:hover {
-  opacity: 0.72;
+.site-footer__social-link img {
+  display: block;
+  width: var(--footer-icon-size);
+  height: var(--footer-icon-size);
 }
 
-/* =============================================
-   Footerセクション
-   ============================================= */
-.footer {
+.site-footer__bottom {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.site-footer__nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-footer__nav-link {
+  position: relative;
+  color: var(--footer-text);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--footer-font-size);
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.site-footer__nav-link + .site-footer__nav-link::before {
+  content: "|";
+  display: inline-block;
+  margin-inline: 12px;
+  color: var(--footer-text);
+}
+
+/* .site-footer__nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: var(--footer-link-underline-offset);
+  width: 0;
+  height: var(--footer-link-underline-h);
+  background: var(--footer-text);
+  transition: width 0.3s ease;
+}
+
+.site-footer__nav-link:hover::after {
   width: 100%;
-  height: 464px;
-  background-color: var(--footer-gray);
-  margin-top: 100px; /* デモ用に少し余白 */
+} */
+
+.site-footer__copy {
+  margin: 0;
+  color: var(--footer-text);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--footer-font-size);
+  font-weight: 400;
+  line-height: normal;
 }
 
-.footer__inner {
-  height: 100%;
-  align-items: center; /* 垂直中央寄せ（お好みで） */
+.site-footer__right {
+  flex: 0 0 auto;
 }
 
-.footer__logo {
-  grid-column: 2 / 3; /* 187pxのカラムに配置 */
-  font-weight: bold;
-  font-size: 24px;
+.site-footer__right img {
+  display: block;
+  width: var(--footer-logo-w);
+  height: auto;
+  aspect-ratio: 70 / 13;
 }
 
-.footer__sns {
-  grid-column: 4 / 5; /* 右端の255pxのカラムに配置 */
-  justify-self: end;
-  background: #bbb; /* ただの四角形 */
-  padding: 10px 20px;
+/* Tablet */
+@media (max-width: 980px) {
+  .site-footer__inner {
+    gap: 40px;
+  }
+
+  .site-footer__bottom {
+    gap: 24px;
+  }
 }
 
-/* =============================================
-   レスポンシブ
-   ============================================= */
+/* SP */
+@media (max-width: 768px) {
+  .site-footer {
+    min-height: auto;
+  }
 
+  .site-footer__inner {
+    min-height: auto;
+    padding-top: 56px;
+    padding-bottom: 40px;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 32px;
+  }
 
-.unko{
-    font-size: 60px;
+  .site-footer__left {
+    gap: 24px;
+    width: 100%;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .site-footer__nav {
+    flex-wrap: wrap;
+  }
+
+  .site-footer__nav-link,
+  .site-footer__copy {
+    font-size: var(--footer-font-size-sp);
+  }
+
+  .site-footer__right img {
+    width: 220px;
+  }
 }
 
+@media (max-width: 390px) {
+  .site-footer__inner {
+    padding-inline: 20px;
+  }
+
+  .site-footer__right img {
+    width: 200px;
+  }
+}
