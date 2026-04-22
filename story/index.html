@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+    <title>requirements</title>
+    <link rel="stylesheet" href="story.css">
+</head>
+<body class="page-story"><!--body にクラスつけて背景色変えてるよー！-->
+  <header class="site-header">
+    <div class="site-header__inner l-container">
+      <div class="site-header__branding">
+        <h1 class="site-header__logo">
+          <a href="./" class="site-header__logo-link">
+            <img src="./img/logo_header.png" alt="岩崎税理士事務所">
+          </a>
+        </h1>
+
+        <p class="site-header__label">採用サイト</p>
+      </div>
+
+      <nav class="site-header__nav" aria-label="グローバルナビゲーション">
+        <ul class="site-header__list">
+          <li class="site-header__item">
+            <a href="#recruit" class="site-header__link">募集職種</a>
+          </li>
+          <li class="site-header__item">
+            <a href="#feature" class="site-header__link">特徴</a>
+          </li>
+          <li class="site-header__item">
+            <a href="#message" class="site-header__link">メッセージ</a>
+          </li>
+          <li class="site-header__item">
+            <a href="#story" class="site-header__link">インタビュー</a>
+          </li>
+          <li class="site-header__item">
+            <a href="#entry" class="site-header__link">Entry</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <header class="sp-header">
+    <a href="/" class="sp-header__brand" aria-label="岩崎新税理士事務所 採用サイト">
+      <img src="img/logo_header.png" alt="岩崎新税理士事務所">
+      <span class="sp-header__site-label">採用サイト</span>
+    </a>
+
+    <button class="sp-header__menu" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="sp-nav-panel">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" fill="none" aria-hidden="true">
+      <rect width="20" height="1" fill="white"/>
+      <rect y="8" width="20" height="1" fill="white"/>
+      <rect y="16" width="20" height="1" fill="white"/>
+    </svg>
+    </button>
+    <div class="sp-nav-overlay" id="sp-nav-overlay" aria-hidden="true"></div>
+
+    <div class="sp-nav-panel" id="sp-nav-panel" aria-hidden="true">
+      <nav class="sp-nav" aria-label="スマートフォンメニュー">
+        <ul class="sp-nav__list">
+          <li class="sp-nav__item"><a href="#message">募集職種</a></li>
+          <li class="sp-nav__item"><a href="#story">特徴</a></li>
+          <li class="sp-nav__item"><a href="#recruit">メッセージ</a></li>
+          <li class="sp-nav__item"><a href="#requirements">インタビュー</a></li>
+          <li class="sp-nav__item"><a href="#entry">Entry</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <figure class="hero__image-box">
+          <img src="img/FV-sumple.jpg" alt="オフィスの写真">
+      </figure>
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__title">Story</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" >
+      <article class="story-person" data-person="nishimaki">
+        <div class="story-person__intro">
+          <div class="story-person__lead">
+            <p class="story-person__story">
+              <span class="story-person__story-icon" aria-hidden="true">
+                <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z" fill="#E39A3B"/>
+                </svg>
+              </span>
+              <span class="story-person__story-text">Story 01</span>
+            </p>
+
+            <div class="story-person__meta">
+              <h2 class="story-person__title">“つながる距離”が、ちょうどいい。</h2>
+              <p class="story-person__position">西巻 ｜ 税務コンサルタント（正社員）</p>
+            </div>
+
+            <h3 class="story-person__heading">Interview</h3>
+
+            <div class="story-person__qa">
+              <p class="story-person__question">現在はどんなお仕事を担当されていますか？</p>
+              <p class="story-person__answer">
+                現在は、関与先の会計データのチェックや関与先との打ち合わせ、決算書や税務申告書の作成などを担当しています。<br>
+                関与先の多くがクラウド会計ソフトを利用しているため、打ち合わせは基本的にオンラインで行っており、効率的に業務を進められています。
+              </p>
+            </div>
+          </div>
+
+          <figure class="story-person__image">
+            <img src="img/nishimaki-story-sp.webp" alt="西巻さんの写真">
+          </figure>
+        </div>
+
+        <div class="story-person__qa-group">
+          <div class="story-person__qa">
+            <p class="story-person__question">リモートで働く上で、工夫していることはありますか？</p>
+            <p class="story-person__answer">
+              対面でのやり取りが少ない分、チャットやオンライン会議でのコミュニケーションを特に大切にしています。<br>
+              進捗や疑問点は早めに共有し、小さなことでも相談しやすい雰囲気づくりを意識しています。<br>
+              周囲と連携しながら業務を進めることで、リモートでも安心して仕事ができると感じています。
+            </p>
+          </div>
+
+          <div class="story-person__qa">
+            <p class="story-person__question">この仕事のやりがいはどんなところにありますか？</p>
+            <p class="story-person__answer">
+              関与先と継続的に関わりながら、信頼関係を築いていける点にやりがいを感じます。<br>
+              毎月の打ち合わせを重ねる中で、少しずつ相談していただける内容が増え、「任せてよかった」と言っていただけたときはとても嬉しく思います。<br>
+              長くお付き合いできる仕事だからこその魅力だと感じています。
+            </p>
+          </div>
+
+          <div class="story-person__qa">
+            <p class="story-person__question">岩崎税理士事務所の魅力は？</p>
+            <p class="story-person__answer">
+              職場の雰囲気が良く、相談しやすい環境が整っている点が魅力だと思います。<br>
+              リモート中心の働き方でも、チャットやオンライン会議で気軽にコミュニケーションが取れるため、孤立感を感じることはありません。<br>
+              安心して長く働ける事務所だと感じています。
+            </p>
+          </div>
+        </div>
+        
+        <div class="story-person__day">
+          <figure class="story-person__day-image">
+            <img src="img/nishimaki.webp" alt="西巻さんの一日の様子">
+          </figure>
+          <figure class="story-person__day-image--sp">
+            <img src="img/nishimaki-pc.webp" alt="西巻さんの一日の様子">
+          </figure>
+
+          <div class="story-person__day-body">
+            <h3 class="story-person__day-heading">One day</h3>
+
+            <dl class="schedule">
+              <div class="schedule__item">
+                <dt class="schedule__time">9:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">出勤・メールチェック</p>
+                  <p class="schedule__desc">メールやチャットを確認し、関与先からの問い合わせに対応します</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">10:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">会計データのチェック・報告資料の作成</p>
+                  <p class="schedule__desc">関与先が入力した会計データを確認し、打ち合わせで使用する報告資料を作成します。</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">12:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">昼休憩</p>
+                  <p class="schedule__desc">近くに飲食店があり、外食することが多いです</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">13:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">関与先とオンライン面談</p>
+                  <p class="schedule__desc">画面共有を使いながら、業績の説明や今後の見通しについてお話しします</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">14:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">決算・申告業務</p>
+                  <p class="schedule__desc">画面共有を使いながら、業績の説明や今後の見通しについてお話しします</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">17:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">退勤</p>
+                  <p class="schedule__desc">進捗を共有し、翌日のスケジュールを確認して退勤します</p>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+
+      <article class="story-person" data-person="nakamura">
+        <div class="story-person__intro">
+          <div class="story-person__lead">
+            <p class="story-person__story">
+              <span class="story-person__story-icon" aria-hidden="true">
+                <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z" fill="#E39A3B"/>
+                </svg>
+              </span>
+              <span class="story-person__story-text">Story 02</span>
+            </p>
+
+            <div class="story-person__meta">
+              <h2 class="story-person__title">仕事も家庭も、自分らしく。<br>彩り豊かな毎日がお客様への貢献へ</h2>
+              <p class="story-person__position">中村 ｜ 税理士補助（パート）</p>
+
+              <div class="story-card__tags">
+                <span class="story-card__tag">子育てと両立</span>
+                <span class="story-card__tag">フレックスタイム</span>
+              </div>
+            </div>
+
+            <h3 class="story-person__heading">Interview</h3>
+
+            <div class="story-person__qa">
+              <p class="story-person__question">現在はどんなお仕事を担当されていますか？</p>
+              <p class="story-person__answer">
+                主な業務は顧問先様の会計の記帳代行・決算申告書等の作成補助業務・事務所の総務的な業務になります。<br>クラウドで情報共有ができるので効率よく仕事が進められています。
+              </p>
+            </div>
+          </div>
+
+          <figure class="story-person__image">
+            <img src="img/nakamura-story-sp.webp" alt="中村さんの写真">
+          </figure>
+        </div>
+
+        <div class="story-person__qa-group">
+          <div class="story-person__qa">
+            <p class="story-person__question">家庭と仕事の両立について、どう感じていますか？</p>
+            <p class="story-person__answer">
+              「今日は少し早めに始めて、早めに終わる」「子供の用事がある日は短時間にする」など、その日の状況に合わせて働き方を選べるのが、とても助かっています。<br>家族を大事に仕事に向き合えるので、無理なく続けられていると感じています。
+            </p>
+          </div>
+
+          <div class="story-person__qa">
+            <p class="story-person__question">働く上で大切にしていることは何ですか？</p>
+            <p class="story-person__answer">
+              家族との時間を大切にしながら、仕事を通じてお客様や事務所に貢献できることを大切にしております。<br>そんな毎日に彩りを感じ、一人の女性として充実した日々を歩んでいます。<br>また、話は少し違いますが現在は税務の学習にも楽しく励んでおります。<br>私が勉強する姿が子供たちにも良い刺激となっているようで、「お母さんも頑張っているから自分たちも」と、家族で一緒に学習に取り組む時間が今の私の原動力です。
+            </p>
+          </div>
+
+          <div class="story-person__qa">
+            <p class="story-person__question">岩崎税理士事務所の魅力は？</p>
+            <p class="story-person__answer">
+              一番の魅力は、ひとりひとりの働き方に対してとても理解があるところだと思います。<br>その柔軟な環境があるからこそ、私自身が心にゆとりを持ち、業務に向き合うことができております。<br>私生活の充実が質の高い仕事の源となり、お客様へ笑顔と安心のサポートをお届けしたいと考えております。
+            </p>
+          </div>
+        </div>
+        
+        <div class="story-person__day">
+          <figure class="story-person__day-image">
+            <img src="img/nakamura-story.webp" alt="中村さんの一日の様子">
+          </figure>
+          <figure class="story-person__day-image--sp">
+            <img src="img/nakamura-story-sp.webp" alt="中村さんの一日の様子">
+          </figure>
+
+          <div class="story-person__day-body">
+            <h3 class="story-person__day-heading">One day</h3>
+
+            <dl class="schedule">
+              <div class="schedule__item">
+                <dt class="schedule__time">8:30</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">自宅で業務開始</p>
+                  <p class="schedule__desc">子供を送り出してから、本日の業務を確認し社内チャットにて報告・相談をおこなう</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">8:45</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">会計ソフトの入力</p>
+                  <p class="schedule__desc">顧問先様の会計業務をクラウド型の会計ソフトに入力し、入力内容を確認する</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">11:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">会計内容を報告・相談</p>
+                  <p class="schedule__desc">不明点をチャットで報告し相談しながら業務を進行する</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">12:00</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">昼休憩</p>
+                  <p class="schedule__desc">昼食後に、家事を済ませたり<br>散歩・軽いジョギングをして気分転換をする</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">12:45</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">申告書・資料作成のサポート</p>
+                  <p class="schedule__desc">集中できる時間に、決まった作業を丁寧に進める</p>
+                </dd>
+              </div>
+
+              <div class="schedule__item">
+                <dt class="schedule__time">16:30</dt>
+                <dd class="schedule__body">
+                  <p class="schedule__title">業務終了</p>
+                  <p class="schedule__desc">本日の業務の報告をして、小学生の娘の習い事の送迎をする。<br>習い事中に夕飯の買い物をする</p>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="story-cta">
+      <div class="story-cta__inner">
+        <p class="story-cta__lead">
+          この働き方を、選択肢のひとつとして<br>
+          考えてくださった方へ
+        </p>
+
+        <p class="story-cta__text">
+          あなたのペースで、まずは
+          <span class="sp-only">募集要項をご覧ください</span>
+          <span class="pc-only">募集要項をご覧ください</span>
+        </p>
+
+        <div class="story-cta__buttons">
+          <a href="#requirements" class="story-cta__button story-cta__button--primary">募集要項を見る</a>
+          <a href="#entry" class="story-cta__button story-cta__button--secondary">エントリーフォームへ</a>
+        </div>
+      </div>
+    </section>
+
+    
+    
+  </main>
+  <footer class="site-footer">
+   <div class="site-footer__inner l-container">
+
+    <div class="site-footer__left">
+      <div class="site-footer__social">
+        <a href="#" class="site-footer__social-link" aria-label="X">
+          <img src="img/icon-X.svg" alt="X">
+        </a>
+        <a href="#" class="site-footer__social-link" aria-label="Instagram">
+          <img src="img/icon-Instagram.svg" alt="Instagram">
+        </a>
+        <a href="#" class="site-footer__social-link" aria-label="Facebook">
+          <img src="img/icon-facebook.svg" alt="Facebook">
+        </a>
+      </div>
+
+      <div class="site-footer__bottom">
+        <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+          <a href="#" class="site-footer__nav-link">アクセス</a>
+          <a href="#" class="site-footer__nav-link">プライバシーポリシー</a>
+          <a href="#" class="site-footer__nav-link">会社情報</a>
+        </nav>
+
+        <p class="site-footer__copy">
+          © 2025 Arata Tax Accountant Office.
+        </p>
+      </div>
+    </div>
+
+    <div class="site-footer__right">
+      <a href="./" class="site-header__logo-link">
+        <img src="./img/logo_header.png" alt="岩崎税理士事務所">
+      </a>
+    </div>
+
+   </div>
+  </footer>
+  
+  <script>
+    //ヘッダーの昇降
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector('.site-header');
+
+    window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (Math.abs(currentScrollY - lastScrollY) < 5) return;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        header.classList.add('is-hidden');
+    } else {
+        header.classList.remove('is-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+    });
+
+    //ハンバーガー開閉のscript
+    document.addEventListener('DOMContentLoaded', function () {
+    const menuButton = document.querySelector('.sp-header__menu');
+    const navPanel = document.querySelector('.sp-nav-panel');
+    const overlay = document.querySelector('.sp-nav-overlay');
+    const navLinks = document.querySelectorAll('.sp-nav__item a');
+
+    if (!menuButton || !navPanel || !overlay) return;
+
+    const openNav = () => {
+      navPanel.classList.remove('is-closing');
+      overlay.classList.remove('is-closing');
+
+      navPanel.classList.add('is-open');
+      overlay.classList.add('is-open');
+      document.body.classList.add('is-nav-open');
+
+      menuButton.setAttribute('aria-expanded', 'true');
+      menuButton.setAttribute('aria-label', 'メニューを閉じる');
+      navPanel.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeNav = () => {
+      navPanel.classList.add('is-closing');
+      overlay.classList.add('is-closing');
+
+      navPanel.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('is-nav-open');
+
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'メニューを開く');
+      navPanel.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+
+      window.setTimeout(() => {
+        navPanel.classList.remove('is-closing');
+        overlay.classList.remove('is-closing');
+      }, 240);
+    };
+
+    const toggleNav = () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    };
+
+    menuButton.addEventListener('click', toggleNav);
+    overlay.addEventListener('click', closeNav);
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        closeNav();
+      }
+    });
+  });
+  </script>
+</body>
+</html>
